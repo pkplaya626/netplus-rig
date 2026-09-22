@@ -1,0 +1,44 @@
+{
+  "lastUpdated": "2026-09-22T23:59:00Z",
+  "currentDay": 1,
+  "totalDays": 30,
+  "dailyLogs": {
+    "1": {
+      "date": "2026-09-22",
+      "status": "GREEN",
+      "synthesisFile": "artifacts/day-01-osi-and-packet-flow.md",
+      "wordCount": 782,
+      "cardsReviewed": 10,
+      "questionsCleared": 5,
+      "subnetDrill": {
+        "attempts": 6,
+        "correct": 6,
+        "avgTimeSeconds": 21.4,
+        "bestTimeSeconds": 14.8
+      },
+      "portDrill": {
+        "attempts": 22,
+        "correct": 22,
+        "avgLatencyMs": 845,
+        "accuracyPercent": 100.0
+      }
+    }
+  },
+  "aggregateStats": {
+    "totalCardsReviewed": 10,
+    "totalQuestionsAnswered": 5,
+    "questionsCorrect": 5,
+    "overallAccuracy": 100.0,
+    "avgSubnetTimeSeconds": 21.4,
+    "bestSubnetTimeSeconds": 14.8,
+    "avgPortLatencyMs": 845,
+    "bestPortAccuracyPercent": 100.0
+  },
+  "domainMastery": {
+    "1.0 Networking Concepts": { "cleared": 18, "total": 24, "pct": 75 },
+    "2.0 Network Implementation": { "cleared": 10, "total": 20, "pct": 50 },
+    "3.0 Network Operations": { "cleared": 7, "total": 16, "pct": 43 },
+    "4.0 Network Security": { "cleared": 8, "total": 18, "pct": 44 },
+    "5.0 Network Troubleshooting": { "cleared": 8, "total": 18, "pct": 44 }
+  }
+}

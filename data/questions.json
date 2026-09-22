@@ -1,0 +1,492 @@
+[
+  {
+    "id": "q-101",
+    "domain": "1.0 Networking Concepts",
+    "subdomain": "1.1 OSI Model Encapsulation",
+    "question": "During transmission of web traffic, at which OSI layer does the TCP header containing sequence numbers and source/destination port numbers get prepended to the data payload?",
+    "options": [
+      "Layer 2 - Data Link Layer",
+      "Layer 3 - Network Layer",
+      "Layer 4 - Transport Layer",
+      "Layer 5 - Session Layer"
+    ],
+    "correctIndex": 2,
+    "explanation": "The Transport Layer (Layer 4) is responsible for end-to-end communication, segmentation, flow control, and port addressing. It encapsulates data into segments (TCP) or datagrams (UDP)."
+  },
+  {
+    "id": "q-102",
+    "domain": "1.0 Networking Concepts",
+    "subdomain": "1.2 Protocols & Ports",
+    "question": "A network engineer needs to configure firewall rules to permit secure, encrypted directory lookups against an Active Directory Domain Controller. Which port and protocol must be permitted?",
+    "options": [
+      "TCP 389",
+      "TCP 636",
+      "UDP 88",
+      "TCP 445"
+    ],
+    "correctIndex": 1,
+    "explanation": "LDAPS (Lightweight Directory Access Protocol over SSL/TLS) operates over TCP port 636. Standard unencrypted LDAP uses TCP port 389."
+  },
+  {
+    "id": "q-103",
+    "domain": "1.0 Networking Concepts",
+    "subdomain": "1.3 IPv4 Subnetting",
+    "question": "Given the host IP address 192.168.10.77 with subnet mask 255.255.255.224 (/27), what is the valid broadcast address for this subnet?",
+    "options": [
+      "192.168.10.63",
+      "192.168.10.95",
+      "192.168.10.127",
+      "192.168.10.255"
+    ],
+    "correctIndex": 1,
+    "explanation": "A /27 has block size 256 - 224 = 32. Subnet boundaries are 0, 32, 64, 96... The IP 192.168.10.77 falls into the 192.168.10.64/27 subnet. The network ID is .64, the first usable is .65, the last usable is .94, and the broadcast address is 192.168.10.95."
+  },
+  {
+    "id": "q-104",
+    "domain": "1.0 Networking Concepts",
+    "subdomain": "1.3 IPv4 Subnetting",
+    "question": "How many usable host IP addresses are available in a /23 network?",
+    "options": [
+      "254",
+      "510",
+      "512",
+      "1022"
+    ],
+    "correctIndex": 1,
+    "explanation": "A /23 network has 32 - 23 = 9 host bits. Total IP addresses = 2^9 = 512. Subtracting 2 for Network ID and Broadcast address gives 512 - 2 = 510 usable hosts."
+  },
+  {
+    "id": "q-105",
+    "domain": "1.0 Networking Concepts",
+    "subdomain": "1.4 IPv6 Addressing",
+    "question": "Which of the following IPv6 addresses represents a link-local unicast address automatically configured on a network interface?",
+    "options": [
+      "2001:0db8:85a3::8a2e:0370:7334",
+      "fe80::1a2b:3c4d:5e6f:7081",
+      "fd00::dead:beef:1234",
+      "ff02::1"
+    ],
+    "correctIndex": 1,
+    "explanation": "IPv6 link-local addresses always begin with the prefix fe80::/10. Address 2001:: is Global Unicast, fd00:: is Unique Local, and ff02:: is Multicast."
+  },
+  {
+    "id": "q-106",
+    "domain": "1.0 Networking Concepts",
+    "subdomain": "1.2 Protocols & Ports",
+    "question": "Which protocol uses UDP port 162 to receive unsolicited alert messages and trap notifications from managed network appliances?",
+    "options": [
+      "Syslog",
+      "SNMP Trap",
+      "NTP",
+      "RADIUS Accounting"
+    ],
+    "correctIndex": 1,
+    "explanation": "SNMP Traps and InformRequests are transmitted by managed devices to the Network Management Station (NMS) on UDP port 162. Standard SNMP polling queries use UDP 161."
+  },
+  {
+    "id": "q-107",
+    "domain": "1.0 Networking Concepts",
+    "subdomain": "1.1 TCP Three-Way Handshake",
+    "question": "In a standard TCP connection teardown, what flag sequence is typically exchanged between client and server?",
+    "options": [
+      "SYN, SYN-ACK, ACK",
+      "FIN, ACK, FIN, ACK",
+      "RST, RST-ACK",
+      "URG, PSH, FIN"
+    ],
+    "correctIndex": 1,
+    "explanation": "A graceful TCP termination utilizes a 4-step exchange: Client sends FIN, Server replies ACK; Server sends its own FIN, Client replies with ACK."
+  },
+  {
+    "id": "q-108",
+    "domain": "1.0 Networking Concepts",
+    "subdomain": "1.2 Ports & Protocols",
+    "question": "Which email protocol downloads messages to a local client and by default removes them from the mail server, listening on TCP port 110?",
+    "options": [
+      "IMAP4",
+      "POP3",
+      "SMTP",
+      "MAPI"
+    ],
+    "correctIndex": 1,
+    "explanation": "Post Office Protocol v3 (POP3) uses TCP port 110 (unencrypted) or TCP 995 (POP3S) and historically downloads messages locally, removing them from the central server."
+  },
+  {
+    "id": "q-201",
+    "domain": "2.0 Network Implementation",
+    "subdomain": "2.1 Copper Media",
+    "question": "A network technician needs to run horizontal cabling that supports 10 Gbps Ethernet throughput across a 90-meter distance in an office building. Which copper cable category is the minimum standard?",
+    "options": [
+      "Cat 5e",
+      "Cat 6",
+      "Cat 6a",
+      "Cat 7"
+    ],
+    "correctIndex": 2,
+    "explanation": "Cat 6 supports 10 Gbps only up to 55 meters (or 37m under alien crosstalk). For the full 100-meter channel length at 10 Gbps, Cat 6a (rated up to 500 MHz) is required."
+  },
+  {
+    "id": "q-202",
+    "domain": "2.0 Network Implementation",
+    "subdomain": "2.1 Fiber Optics",
+    "question": "What type of fiber cable features a core diameter of approximately 9 micrometers and uses a laser transmitter to reach distances of several kilometers?",
+    "options": [
+      "OM3 Multimode",
+      "OM4 Multimode",
+      "OS2 Single-Mode",
+      "Plastic Optical Fiber"
+    ],
+    "correctIndex": 2,
+    "explanation": "Single-mode optical fiber (such as OS1/OS2) has a narrow core of ~8 to 10 µm (typically 9 µm) and utilizes laser light to eliminate modal dispersion, traveling tens of kilometers."
+  },
+  {
+    "id": "q-203",
+    "domain": "2.0 Network Implementation",
+    "subdomain": "2.2 Wireless Architecture",
+    "question": "Which 802.11ax (Wi-Fi 6) feature allows an Access Point to subdivide a radio channel into smaller sub-carriers called Resource Units (RUs) to communicate simultaneously with multiple low-bandwidth clients?",
+    "options": [
+      "OFDMA",
+      "Beamforming",
+      "Channel Bonding",
+      "CSMA/CA"
+    ],
+    "correctIndex": 0,
+    "explanation": "OFDMA (Orthogonal Frequency-Division Multiple Access) splits channels into distinct frequency Resource Units (RUs), enabling simultaneous parallel transmissions to multiple clients and drastically reducing latency."
+  },
+  {
+    "id": "q-204",
+    "domain": "2.0 Network Implementation",
+    "subdomain": "2.3 Switching & VLANs",
+    "question": "What is the primary function of the IEEE 802.1Q standard on a multi-VLAN enterprise switch?",
+    "options": [
+      "To prevent Layer 2 loop topology storms",
+      "To insert a 4-byte tag into Ethernet frames on trunk links to identify VLAN membership",
+      "To negotiate port link aggregation across physical interfaces",
+      "To dynamically distribute IP configuration leases"
+    ],
+    "correctIndex": 1,
+    "explanation": "IEEE 802.1Q defines frame tagging on trunk links between switches, inserting a 32-bit (4-byte) field that includes a 12-bit VLAN Identifier (VID)."
+  },
+  {
+    "id": "q-205",
+    "domain": "2.0 Network Implementation",
+    "subdomain": "2.3 Link Aggregation",
+    "question": "Which open-standard protocol is used to bundle multiple physical Ethernet interfaces into a single high-bandwidth logical link with failover redundancy?",
+    "options": [
+      "LACP (802.3ad / 802.1AX)",
+      "PAgP",
+      "VRRP",
+      "STP (802.1D)"
+    ],
+    "correctIndex": 0,
+    "explanation": "Link Aggregation Control Protocol (LACP) is the IEEE 802.3ad / 802.1AX open standard. PAgP is Cisco proprietary."
+  },
+  {
+    "id": "q-206",
+    "domain": "2.0 Network Implementation",
+    "subdomain": "2.1 Fiber Connectors",
+    "question": "Which fiber connector utilizes a push-pull latching mechanism in a compact form factor, making it the most prevalent connector on modern SFP/SFP+ optical transceivers?",
+    "options": [
+      "ST (Straight Tip)",
+      "SC (Subscriber Connector)",
+      "LC (Lucent Connector)",
+      "BNC"
+    ],
+    "correctIndex": 2,
+    "explanation": "LC (Lucent / Little Connector) is a small form-factor (SFF) connector with a 1.25 mm ferrule and push-pull retaining tab, universally used on modern SFP/SFP+ transceivers."
+  },
+  {
+    "id": "q-207",
+    "domain": "2.0 Network Implementation",
+    "subdomain": "2.2 Power over Ethernet",
+    "question": "What standard provides PoE+ (Type 2) capable of supplying up to 30.0 Watts of power per port at the Power Sourcing Equipment (PSE)?",
+    "options": [
+      "IEEE 802.3af",
+      "IEEE 802.3at",
+      "IEEE 802.3bt",
+      "IEEE 802.11ac"
+    ],
+    "correctIndex": 1,
+    "explanation": "IEEE 802.3at defines PoE+ (up to 30W PSE / 25.5W PD). IEEE 802.3af is standard PoE (15.4W), and 802.3bt is 4PPoE / PoE++ (up to 60W or 90W/100W)."
+  },
+  {
+    "id": "q-301",
+    "domain": "3.0 Network Operations",
+    "subdomain": "3.1 Routing Protocols",
+    "question": "Which dynamic interior gateway routing protocol uses Dijkstra's Shortest Path First (SPF) algorithm to calculate loop-free metric routes based on link bandwidth?",
+    "options": [
+      "RIPv2",
+      "OSPF",
+      "BGP",
+      "EIGRP"
+    ],
+    "correctIndex": 1,
+    "explanation": "OSPF (Open Shortest Path First) is a link-state routing protocol that organizes routers into areas and uses Dijkstra's algorithm to compute the shortest cost path based on interface bandwidth."
+  },
+  {
+    "id": "q-302",
+    "domain": "3.0 Network Operations",
+    "subdomain": "3.2 Network Monitoring",
+    "question": "An administrator wants to configure network monitoring so that switches continuously send performance counters to an external collector. Which SNMP version provides mandatory message encryption and SHA authentication?",
+    "options": [
+      "SNMPv1",
+      "SNMPv2c",
+      "SNMPv3",
+      "RMON"
+    ],
+    "correctIndex": 2,
+    "explanation": "SNMPv3 introduces the User-based Security Model (USM) providing authentication (MD5/SHA) and encryption (DES/AES) with confidentiality (authPriv mode)."
+  },
+  {
+    "id": "q-303",
+    "domain": "3.0 Network Operations",
+    "subdomain": "3.3 High Availability",
+    "question": "What is the open standard protocol defined in RFC 5798 that allows a group of routers to present a single virtual IP address as default gateway to local hosts?",
+    "options": [
+      "HSRP",
+      "GLBP",
+      "VRRP",
+      "CARP"
+    ],
+    "correctIndex": 2,
+    "explanation": "VRRP (Virtual Router Redundancy Protocol) is the open IETF standard for First Hop Redundancy. HSRP and GLBP are Cisco proprietary protocols."
+  },
+  {
+    "id": "q-304",
+    "domain": "3.0 Network Operations",
+    "subdomain": "3.4 Traffic Shaping & QoS",
+    "question": "Which QoS mechanism marks IP packets with a 6-bit value inside the DS field of the IPv4/IPv6 header to classify per-hop forwarding behavior?",
+    "options": [
+      "CoS (Class of Service)",
+      "DSCP (Differentiated Services Code Point)",
+      "RSVP",
+      "Traffic Policing"
+    ],
+    "correctIndex": 1,
+    "explanation": "DSCP uses a 6-bit field in the IP header (Differentiated Services field) allowing 64 possible traffic classifications. CoS operates at Layer 2 inside the 802.1Q PCP tag."
+  },
+  {
+    "id": "q-305",
+    "domain": "3.0 Network Operations",
+    "subdomain": "3.5 Disaster Recovery",
+    "question": "What disaster recovery metric specifies the maximum acceptable age of data files that must be recovered from backup storage for normal operations to resume?",
+    "options": [
+      "RTO (Recovery Time Objective)",
+      "RPO (Recovery Point Objective)",
+      "MTBF (Mean Time Between Failures)",
+      "MTTR (Mean Time to Repair)"
+    ],
+    "correctIndex": 1,
+    "explanation": "RPO (Recovery Point Objective) measures the maximum acceptable period of data loss measured in time. RTO is the duration of time within which a business process must be restored."
+  },
+  {
+    "id": "q-306",
+    "domain": "3.0 Network Operations",
+    "subdomain": "3.1 Routing Concepts",
+    "question": "What value do network operating systems use to select the most trustworthy route when two different routing protocols advertise identical destination prefix paths?",
+    "options": [
+      "Administrative Distance (AD)",
+      "Metric Cost",
+      "Hop Count",
+      "Autonomous System Number"
+    ],
+    "correctIndex": 0,
+    "explanation": "Administrative Distance (AD) is an integer ranking route trustworthiness (e.g., Connected=0, Static=1, eBGP=20, OSPF=110, RIP=120). Lower AD is always preferred."
+  },
+  {
+    "id": "q-401",
+    "domain": "4.0 Network Security",
+    "subdomain": "4.1 Authentication Protocols",
+    "question": "A network security architect must choose a protocol to manage administrative command-line access to core enterprise routers. The protocol must encrypt all packet communications and separate authorization rights per command. Which protocol should be chosen?",
+    "options": [
+      "RADIUS",
+      "TACACS+",
+      "Kerberos",
+      "EAP-TLS"
+    ],
+    "correctIndex": 1,
+    "explanation": "TACACS+ runs over TCP port 49, encrypts the entire packet payload, and granularly separates Authentication, Authorization, and Accounting, allowing per-command authorization. RADIUS only encrypts passwords and combines Auth/Authz."
+  },
+  {
+    "id": "q-402",
+    "domain": "4.0 Network Security",
+    "subdomain": "4.2 Port Security",
+    "question": "What switch security feature automatically limits access to an interface by learning connected host MAC addresses dynamically and disabling the port if an unauthorized MAC connects?",
+    "options": [
+      "Port Security",
+      "BPDU Guard",
+      "Dynamic ARP Inspection",
+      "Storm Control"
+    ],
+    "correctIndex": 0,
+    "explanation": "Port Security restricts interface traffic to learned MAC addresses (e.g. sticky MAC) and can trigger violation actions such as Protect, Restrict, or Shutdown (err-disabled)."
+  },
+  {
+    "id": "q-403",
+    "domain": "4.0 Network Security",
+    "subdomain": "4.3 Layer 2 Attacks",
+    "question": "An attacker rogue device connects to a switch port and attempts to become the root bridge by transmitting lower bridge priority configuration messages. What switch feature prevents this attack?",
+    "options": [
+      "Root Guard",
+      "DHCP Snooping",
+      "PortFast",
+      "IGMP Snooping"
+    ],
+    "correctIndex": 0,
+    "explanation": "Root Guard enforces the placement of the root bridge. If a port enabled with Root Guard receives superior BPDUs from a rogue device claiming to be root, it places the port into root-inconsistent state."
+  },
+  {
+    "id": "q-404",
+    "domain": "4.0 Network Security",
+    "subdomain": "4.4 IPsec Architecture",
+    "question": "When configuring a site-to-site IPsec VPN between branch offices that sit behind IPv4 NAT firewalls, which protocol mode must be used to provide payload confidentiality and traverse NAT?",
+    "options": [
+      "AH in Transport Mode",
+      "ESP in Tunnel Mode with NAT-Traversal (NAT-T)",
+      "GRE without IPsec",
+      "PPTP"
+    ],
+    "correctIndex": 1,
+    "explanation": "ESP (Encapsulating Security Payload) encrypts the inner packet. In Tunnel Mode, a new IP header wraps the packet. NAT-T encapsulates ESP in UDP port 4500 so intermediate NAT gateways do not break integrity checks."
+  },
+  {
+    "id": "q-405",
+    "domain": "4.0 Network Security",
+    "subdomain": "4.5 Wireless Encryption",
+    "question": "Which Wi-Fi security standard replaces Pre-Shared Key (PSK) handshakes with Simultaneous Authentication of Equals (SAE) to protect against offline password guessing?",
+    "options": [
+      "WEP",
+      "WPA Enterprise",
+      "WPA2-PSK",
+      "WPA3-Personal"
+    ],
+    "correctIndex": 3,
+    "explanation": "WPA3-Personal uses SAE (the Dragonfly handshake) which requires interactive authentication, preventing offline dictionary and brute-force attacks even if weak passphrases are used."
+  },
+  {
+    "id": "q-406",
+    "domain": "4.0 Network Security",
+    "subdomain": "4.6 Access Control Lists",
+    "question": "Where should standard IP Access Control Lists (ACLs) typically be placed relative to traffic flow, according to best practice rules?",
+    "options": [
+      "As close to the source as possible",
+      "As close to the destination as possible",
+      "Only on egress edge firewalls",
+      "On all core switch trunk links"
+    ],
+    "correctIndex": 1,
+    "explanation": "Standard ACLs only filter by source IP address. Therefore, they should be placed as close to the destination as possible to avoid unintentionally blocking valid traffic to other destinations. Extended ACLs should be placed close to the source."
+  },
+  {
+    "id": "q-407",
+    "domain": "4.0 Network Security",
+    "subdomain": "4.7 Network Appliances",
+    "question": "What is the primary operational difference between an Intrusion Detection System (IDS) and an Intrusion Prevention System (IPS)?",
+    "options": [
+      "IDS is inline and blocks traffic; IPS is out-of-band and passively monitors",
+      "IDS is out-of-band / passive and generates alerts; IPS is deployed in-line and drops malicious packets in real time",
+      "IDS only inspects Layer 3 headers; IPS inspects Application payload",
+      "IDS requires a hardware ASIC; IPS only runs in software"
+    ],
+    "correctIndex": 1,
+    "explanation": "An IDS sits out-of-band (via SPAN/TAP) and alerts administrators of detected signatures. An IPS sits directly inline with network traffic and can actively drop packets or reset connections upon detecting threats."
+  },
+  {
+    "id": "q-501",
+    "domain": "5.0 Network Troubleshooting",
+    "subdomain": "5.1 Physical Layer Testing",
+    "question": "A newly pulled 80-meter UTP patch run fails link negotiation. A technician attaches a tester that measures the time taken for reflected electrical signals to return, detecting an open circuit at 42 meters. What tool was used?",
+    "options": [
+      "TDR (Time-Domain Reflectometer)",
+      "OTDR",
+      "Multimeter",
+      "Toner Probe"
+    ],
+    "correctIndex": 0,
+    "explanation": "A Time-Domain Reflectometer (TDR) sends electrical pulses down copper metallic cables to calculate distances to impedance changes, opens, or shorts based on signal reflection time."
+  },
+  {
+    "id": "q-502",
+    "domain": "5.0 Network Troubleshooting",
+    "subdomain": "5.2 IP Diagnostics",
+    "question": "A workstation boots and displays the IPv4 address 169.254.120.45 with subnet mask 255.255.0.0. The user cannot access internet or intranet servers. What is the root cause?",
+    "options": [
+      "DNS resolution failure",
+      "DHCP server failure or exhaustion (APIPA fallback)",
+      "Duplicate MAC address collision",
+      "Defective gateway ARP cache"
+    ],
+    "correctIndex": 1,
+    "explanation": "An IP in 169.254.0.0/16 indicates an Automatic Private IP Addressing (APIPA) address, assigned by Windows when an interface fails to receive a response from a DHCP server."
+  },
+  {
+    "id": "q-503",
+    "domain": "5.0 Network Troubleshooting",
+    "subdomain": "5.3 Switching & MTU Issues",
+    "question": "A client can establish a basic SSH connection to a remote server over a GRE tunnel, but large file transfers stall indefinitely. Pinging the server with a packet size of 1500 bytes and the DF (Don't Fragment) bit set fails. What is the issue?",
+    "options": [
+      "Duplex mismatch",
+      "Path MTU black hole (tunnel overhead exceeding MTU)",
+      "VLAN tagging mismatch",
+      "STP blocking port"
+    ],
+    "correctIndex": 1,
+    "explanation": "GRE encapsulation adds 24 bytes of header overhead. A 1500-byte packet with DF set exceeds the tunnel interface MTU (1476 bytes) and gets dropped if ICMP 'Fragmentation Needed' is blocked, causing an MTU black hole."
+  },
+  {
+    "id": "q-504",
+    "domain": "5.0 Network Troubleshooting",
+    "subdomain": "5.4 Packet Analysis",
+    "question": "In Wireshark, what display filter will isolate all DNS traffic querying for host records or responses to/from a specific server with IP 10.0.0.53?",
+    "options": [
+      "dns and ip.addr == 10.0.0.53",
+      "port 53 && host 10.0.0.53",
+      "udp.port == 53 or tcp.port == 53",
+      "filter.dns == 10.0.0.53"
+    ],
+    "correctIndex": 0,
+    "explanation": "Wireshark uses protocol-aware display filters. `dns and ip.addr == 10.0.0.53` accurately matches all DNS protocol messages involving the host 10.0.0.53."
+  },
+  {
+    "id": "q-505",
+    "domain": "5.0 Network Troubleshooting",
+    "subdomain": "5.5 Interface Statistics",
+    "question": "A network switch interface displays an increasing count of 'Late Collisions' and 'CRC Errors'. What is the most likely physical layer issue?",
+    "options": [
+      "Excessive cable length or duplex mismatch",
+      "Broadcast storm",
+      "VLAN hopping attack",
+      "Expired DHCP lease"
+    ],
+    "correctIndex": 0,
+    "explanation": "Late collisions (occurring after 64 bytes of transmission) typically point to a duplex mismatch (one end set to Full Duplex and the other Half Duplex) or cable lengths exceeding the maximum standard limit."
+  },
+  {
+    "id": "q-506",
+    "domain": "5.0 Network Troubleshooting",
+    "subdomain": "5.6 Routing Loops",
+    "question": "What IP header field prevents a packet from circulating indefinitely in a routing loop, and what ICMP error message is returned to the source when this field drops to zero?",
+    "options": [
+      "TTL (Time to Live); ICMP Type 11 (Time Exceeded)",
+      "Checksum; ICMP Type 3 (Destination Unreachable)",
+      "Identification; ICMP Type 8 (Echo Request)",
+      "Hop Limit; ICMP Type 5 (Redirect)"
+    ],
+    "correctIndex": 0,
+    "explanation": "IPv4 TTL (IPv6 Hop Limit) is decremented by 1 at every router hop. When TTL reaches 0, the packet is discarded and an ICMP Type 11 'Time Exceeded' message is generated."
+  },
+  {
+    "id": "q-507",
+    "domain": "5.0 Network Troubleshooting",
+    "subdomain": "5.7 Troubleshooting Steps",
+    "question": "According to the CompTIA 7-step troubleshooting methodology, what step immediately follows 'Establish a theory of probable cause'?",
+    "options": [
+      "Establish a plan of action",
+      "Test the theory to determine cause",
+      "Implement the solution",
+      "Verify full system functionality"
+    ],
+    "correctIndex": 1,
+    "explanation": "Step 1 is Identify Problem -> Step 2 is Establish Theory of Probable Cause -> Step 3 is Test the Theory to Determine Cause -> Step 4 is Establish Plan of Action -> Step 5 Implement Solution -> Step 6 Verify Functionality -> Step 7 Document Findings."
+  }
+]

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
+  <title>CompTIA Network+ (N10-009) // SM-2 Flashcard Engine</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Header Bar -->
+  <header class="header-bar">
+    <div class="brand-container">
+      <a href="index.html" class="brand-logo">
+        <span class="pulse-dot"></span>
+        <span>NET+ RIG // FLASHCARDS</span>
+      </a>
+      <span class="badge badge-cyan">SM-2 ENGINE</span>
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">Mission Control</a></li>
+        <li><a href="cards.html" class="nav-link active">Flashcards (SM-2)</a></li>
+        <li><a href="drills.html" class="nav-link">Speed Drills</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <button class="btn btn-secondary" id="export-git-nav-btn">📦 Export Review State</button>
+    </div>
+  </header>
+
+  <!-- Main Review View -->
+  <main class="main-wrapper">
+    <!-- Filter and Session Bar -->
+    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-bottom:1.5rem;">
+      <div style="display:flex; align-items:center; gap:0.5rem; flex-wrap:wrap;">
+        <span style="font-size:0.85rem; color:var(--text-secondary); font-family:var(--font-mono);">FILTER DECK:</span>
+        <button class="btn btn-secondary filter-pill active" data-filter="all">All Cards</button>
+        <button class="btn btn-secondary filter-pill" data-filter="due">Due Today</button>
+        <button class="btn btn-secondary filter-pill" data-filter="domain:1.0">1.0 Concepts</button>
+        <button class="btn btn-secondary filter-pill" data-filter="domain:2.0">2.0 Implementation</button>
+        <button class="btn btn-secondary filter-pill" data-filter="domain:3.0">3.0 Operations</button>
+        <button class="btn btn-secondary filter-pill" data-filter="domain:4.0">4.0 Security</button>
+        <button class="btn btn-secondary filter-pill" data-filter="domain:5.0">5.0 Troubleshooting</button>
+      </div>
+
+      <div style="display:flex; gap:1rem; font-family:var(--font-mono); font-size:0.85rem;">
+        <div class="badge badge-cyan">Queue Remaining: <span id="stat-queue-remaining" style="margin-left:4px; font-weight:800;">0</span></div>
+        <div class="badge badge-emerald">Session Studied: <span id="stat-session-count" style="margin-left:4px; font-weight:800;">0</span></div>
+        <div class="badge badge-amber">Deck Pool: <span id="stat-deck-total" style="margin-left:4px; font-weight:800;">55</span></div>
+      </div>
+    </div>
+
+    <!-- Flashcard Interactive Stage -->
+    <div class="flashcard-stage" id="card-stage">
+      <!-- Injected via cards.js -->
+    </div>
+
+    <!-- Keyboard Controls Legend -->
+    <div style="max-width:760px; margin:2.5rem auto 0; padding:1rem; background:var(--bg-surface); border:1px solid var(--border-subtle); border-radius:8px; display:flex; justify-content:space-around; flex-wrap:wrap; gap:1rem; font-size:0.85rem; color:var(--text-secondary);">
+      <div><kbd>Space</kbd> / <kbd>Enter</kbd> : Reveal Back</div>
+      <div><kbd>1</kbd> : Again (Reset)</div>
+      <div><kbd>2</kbd> : Hard</div>
+      <div><kbd>3</kbd> : Good</div>
+      <div><kbd>4</kbd> : Easy</div>
+    </div>
+  </main>
+
+  <!-- Modal Backdrop for Git Payload Export -->
+  <div id="git-export-modal" class="modal-backdrop"></div>
+
+  <!-- Scripts -->
+  <script type="module">
+    import { FlashcardController } from './js/cards.js';
+
+    const controller = new FlashcardController();
+    window.cardController = controller;
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      await controller.init();
+
+      // Setup filter buttons
+      document.querySelectorAll('.filter-pill').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const filter = btn.getAttribute('data-filter');
+          controller.setFilter(filter);
+        });
+      });
+
+      document.getElementById('export-git-nav-btn')?.addEventListener('click', () => {
+        controller.showExportModal();
+      });
+    });
+  </script>
+</body>
+</html>

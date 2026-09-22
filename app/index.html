@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
+  <title>CompTIA Network+ (N10-009) // NOC Mission Control</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Global Header Navigation -->
+  <header class="header-bar">
+    <div class="brand-container">
+      <a href="index.html" class="brand-logo">
+        <span class="pulse-dot"></span>
+        <span>NET+ RIG // N10-009</span>
+      </a>
+      <span class="badge badge-cyan">30-DAY SPRINT</span>
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link active">Mission Control</a></li>
+        <li><a href="cards.html" class="nav-link">Flashcards (SM-2)</a></li>
+        <li><a href="drills.html" class="nav-link">Speed Drills</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <button class="btn btn-secondary" id="open-export-btn">📦 Export State</button>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="main-wrapper">
+    <!-- NOC Mission Control Terminal Banner -->
+    <section class="mission-banner">
+      <div class="mission-title-group">
+        <h1>NOC MISSION CONTROL // DAY <span id="current-day-label">01</span></h1>
+        <p>Serverless, GitHub-Native 30-Day Certification Accountability Engine</p>
+      </div>
+      <div class="streak-pill-container">
+        <div class="streak-pill">
+          <span>ACTIVE STREAK:</span>
+          <span class="streak-count" id="active-streak-display">1 DAY</span>
+        </div>
+        <div class="streak-pill">
+          <span>PROCTOR DEADLINE:</span>
+          <span style="color: var(--neon-amber);" id="proctor-countdown">23:59 EDT</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Metrics Grid -->
+    <section class="dashboard-grid">
+      <div class="card">
+        <div class="card-header-row">
+          <span class="card-title">Flashcard Deck (SM-2)</span>
+          <span class="badge badge-emerald">ACTIVE</span>
+        </div>
+        <div class="metric-highlight" id="metric-cards-due">0 DUE</div>
+        <p class="metric-subtext"><span id="metric-cards-total">55</span> Total Seeded Cards | SM-2 Spaced Repetition</p>
+        <div style="margin-top: 1.25rem;">
+          <a href="cards.html" class="btn btn-primary" style="width: 100%;">Study Flashcards</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header-row">
+          <span class="card-title">Subnetting Time Trial</span>
+          <span class="badge badge-cyan">TARGET: &lt; 30s</span>
+        </div>
+        <div class="metric-highlight" id="metric-subnet-pb">21.4s</div>
+        <p class="metric-subtext">Average: <span id="metric-subnet-avg">21.4s</span> | CIDR /16 to /30</p>
+        <div style="margin-top: 1.25rem;">
+          <a href="drills.html?tab=subnet" class="btn btn-secondary" style="width: 100%;">Launch Subnet Drill</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header-row">
+          <span class="card-title">Port Matching Speed</span>
+          <span class="badge badge-emerald">100% ACC</span>
+        </div>
+        <div class="metric-highlight" id="metric-port-latency">845ms</div>
+        <p class="metric-subtext">Latency Target: &lt; 1000ms | 22 Core Ports</p>
+        <div style="margin-top: 1.25rem;">
+          <a href="drills.html?tab=port" class="btn btn-secondary" style="width: 100%;">Launch Port Drill</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header-row">
+          <span class="card-title">Diagnostic Question Bank</span>
+          <span class="badge badge-amber">35 POOL</span>
+        </div>
+        <div class="metric-highlight" id="metric-quiz-accuracy">100%</div>
+        <p class="metric-subtext"><span id="metric-quiz-cleared">5</span> Cleared | Across all 5 N10-009 Domains</p>
+        <div style="margin-top: 1.25rem;">
+          <button class="btn btn-emerald" id="start-diagnostic-btn" style="width: 100%;">Take Diagnostic Quiz</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 30-Day Sprint Calendar Matrix -->
+    <section class="matrix-container">
+      <div class="card-header-row">
+        <div>
+          <h3>🗓️ 30-Day Sprint Calendar Matrix</h3>
+          <p style="color: var(--text-secondary); font-size: 0.85rem;">Enforced by daily 23:59 Proctor cron. Green = Passing Synthesis & Telemetry | Red = DNF</p>
+        </div>
+        <span class="badge badge-cyan" id="matrix-status-badge">1/30 Cleared</span>
+      </div>
+      <div class="matrix-grid" id="matrix-cells">
+        <!-- Rendered dynamically via JS -->
+      </div>
+    </section>
+
+    <!-- Domain Mastery Breakdown -->
+    <section class="card" style="margin-bottom: 2rem;">
+      <h3 style="margin-bottom: 1rem;">📊 CompTIA Network+ (N10-009) Domain Mastery</h3>
+      <div id="domain-meters-container" style="display: flex; flex-direction: column; gap: 1rem;">
+        <!-- Dynamic Domain Progress Bars -->
+      </div>
+    </section>
+
+    <!-- Diagnostic Quiz Modal / Panel -->
+    <div id="quiz-panel" class="modal-backdrop">
+      <div class="modal-dialog" style="max-width: 720px;">
+        <div class="modal-header">
+          <h3 id="quiz-domain-tag">Domain Diagnostic Question</h3>
+          <button class="close-btn" id="close-quiz-btn">&times;</button>
+        </div>
+        <div class="modal-body" id="quiz-question-container">
+          <!-- Injected via JS -->
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Telemetry Export Modal -->
+  <div id="git-export-modal" class="modal-backdrop"></div>
+
+  <!-- Scripts -->
+  <script type="module">
+    import { TelemetryManager } from './js/telemetry.js';
+    import { FlashcardController } from './js/cards.js';
+
+    const tm = new TelemetryManager();
+    window.Telemetry = tm;
+
+    // Load streak data
+    async function loadStreak() {
+      for (const p of ['telemetry/streak.json', '../telemetry/streak.json']) {
+        try {
+          const resp = await fetch(p);
+          if (resp.ok) return await resp.json();
+        } catch(e) {}
+      }
+      return { currentStreak: 1, days: { "1": "GREEN" } };
+    }
+
+    async function initDashboard() {
+      const streakData = await loadStreak();
+      const progress = tm.progress;
+      const agg = progress.aggregateStats;
+
+      // Update UI numbers
+      document.getElementById('active-streak-display').textContent = `${streakData.currentStreak || 1} DAYS`;
+      document.getElementById('metric-subnet-pb').textContent = `${agg.bestSubnetTimeSeconds || 21.4}s`;
+      document.getElementById('metric-subnet-avg').textContent = `${agg.avgSubnetTimeSeconds || 21.4}s`;
+      document.getElementById('metric-port-latency').textContent = `${agg.avgPortLatencyMs || 845}ms`;
+      document.getElementById('metric-quiz-accuracy').textContent = `${agg.overallAccuracy || 100}%`;
+      document.getElementById('metric-quiz-cleared').textContent = agg.totalQuestionsAnswered || 5;
+
+      // Render 30-day matrix
+      const matrixContainer = document.getElementById('matrix-cells');
+      matrixContainer.innerHTML = '';
+      for (let day = 1; day <= 30; day++) {
+        const status = streakData.days?.[String(day)] || 'PENDING';
+        const cell = document.createElement('div');
+        cell.className = `matrix-cell ${status.toLowerCase()}`;
+        const emoji = status === 'GREEN' ? '🟩' : (status === 'RED' ? '🟥' : '⬜');
+        cell.innerHTML = `<div>${emoji}</div><div style="font-weight:700;margin-top:4px;">Day ${String(day).padStart(2, '0')}</div><div style="font-size:0.75rem;opacity:0.7;">${status}</div>`;
+        matrixContainer.appendChild(cell);
+      }
+
+      // Render domain meters
+      const domainContainer = document.getElementById('domain-meters-container');
+      domainContainer.innerHTML = '';
+      const dm = progress.domainMastery;
+      for (const [domainName, data] of Object.entries(dm)) {
+        const pct = data.pct || 0;
+        const row = document.createElement('div');
+        row.innerHTML = `
+          <div style="display:flex; justify-content:space-between; font-size:0.9rem; font-weight:600; margin-bottom:0.35rem;">
+            <span>${domainName}</span>
+            <span style="font-family:var(--font-mono); color:var(--neon-cyan);">${pct}% (${data.cleared}/${data.total})</span>
+          </div>
+          <div style="background:var(--bg-card); height:10px; border-radius:5px; overflow:hidden; border:1px solid var(--border-subtle);">
+            <div style="width:${pct}%; height:100%; background:var(--neon-cyan); border-radius:5px;"></div>
+          </div>
+        `;
+        domainContainer.appendChild(row);
+      }
+
+      // Check due cards count
+      for (const p of ['data/cards.json', '../data/cards.json']) {
+        try {
+          const resp = await fetch(p);
+          if (resp.ok) {
+            const cards = await resp.json();
+            document.getElementById('metric-cards-total').textContent = cards.length;
+            const today = new Date().toISOString().split('T')[0];
+            const dueCount = cards.filter(c => {
+              const r = tm.reviews.cards[c.id];
+              return !r || r.dueDate <= today;
+            }).length;
+            document.getElementById('metric-cards-due').textContent = `${dueCount} DUE`;
+            break;
+          }
+        } catch(e) {}
+      }
+    }
+
+    initDashboard();
+
+    // Export button binding
+    document.getElementById('open-export-btn').addEventListener('click', () => {
+      const fc = new FlashcardController();
+      fc.showExportModal();
+    });
+
+    // Diagnostic Quiz feature
+    let questionsPool = [];
+    let currentQuizIndex = 0;
+
+    async function loadQuestions() {
+      for (const p of ['data/questions.json', '../data/questions.json']) {
+        try {
+          const resp = await fetch(p);
+          if (resp.ok) {
+            questionsPool = await resp.json();
+            break;
+          }
+        } catch(e) {}
+      }
+    }
+
+    function renderQuizQuestion() {
+      const q = questionsPool[currentQuizIndex];
+      const container = document.getElementById('quiz-question-container');
+      document.getElementById('quiz-domain-tag').textContent = `${q.domain} // ${q.subdomain}`;
+
+      container.innerHTML = `
+        <p style="font-size:1.15rem; font-weight:600; margin-bottom:1.5rem; line-height:1.5;">${q.question}</p>
+        <div style="display:flex; flex-direction:column; gap:0.75rem;" id="quiz-options-list">
+          ${q.options.map((opt, i) => `
+            <button class="btn btn-secondary quiz-opt-btn" data-index="${i}" style="text-align:left; justify-content:flex-start; padding:1rem; font-family:var(--font-mono);">
+              <span style="color:var(--neon-cyan); margin-right:8px;">[${String.fromCharCode(65 + i)}]</span> ${opt}
+            </button>
+          `).join('')}
+        </div>
+        <div id="quiz-explanation-box" style="display:none; margin-top:1.5rem; padding:1rem; background:var(--bg-card); border-radius:6px; border-left:4px solid var(--neon-cyan); font-size:0.95rem;"></div>
+        <div style="margin-top:1.5rem; display:flex; justify-content:flex-end;">
+          <button class="btn btn-primary" id="next-quiz-btn" style="display:none;">Next Question &rarr;</button>
+        </div>
+      `;
+
+      document.querySelectorAll('.quiz-opt-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const selectedIdx = parseInt(btn.getAttribute('data-index'), 10);
+          const isCorrect = selectedIdx === q.correctIndex;
+
+          document.querySelectorAll('.quiz-opt-btn').forEach((b, idx) => {
+            b.disabled = true;
+            if (idx === q.correctIndex) {
+              b.style.borderColor = 'var(--neon-emerald)';
+              b.style.background = 'rgba(0, 255, 157, 0.15)';
+              b.style.color = 'var(--neon-emerald)';
+            } else if (idx === selectedIdx && !isCorrect) {
+              b.style.borderColor = 'var(--neon-crimson)';
+              b.style.background = 'rgba(255, 82, 82, 0.15)';
+              b.style.color = 'var(--neon-crimson)';
+            }
+          });
+
+          // Show explanation
+          const expBox = document.getElementById('quiz-explanation-box');
+          expBox.style.display = 'block';
+          expBox.innerHTML = `<strong>${isCorrect ? '✅ Correct!' : '❌ Incorrect.'}</strong> ${q.explanation}`;
+          
+          tm.recordQuizAnswer(q.id, q.domain, isCorrect);
+          document.getElementById('next-quiz-btn').style.display = 'inline-flex';
+        });
+      });
+
+      document.getElementById('next-quiz-btn').addEventListener('click', () => {
+        currentQuizIndex = (currentQuizIndex + 1) % questionsPool.length;
+        renderQuizQuestion();
+      });
+    }
+
+    document.getElementById('start-diagnostic-btn').addEventListener('click', async () => {
+      if (questionsPool.length === 0) await loadQuestions();
+      document.getElementById('quiz-panel').style.display = 'flex';
+      renderQuizQuestion();
+    });
+
+    document.getElementById('close-quiz-btn').addEventListener('click', () => {
+      document.getElementById('quiz-panel').style.display = 'none';
+      initDashboard();
+    });
+  </script>
+</body>
+</html>
