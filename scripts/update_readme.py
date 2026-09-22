@@ -170,8 +170,8 @@ def update_readme(repo_root: Path):
         # Generate full README if not existing
         updated_content = f"""# 🚀 CompTIA Network+ (N10-009) 30-Day Training Rig & Telemetry Engine
 
-[![Daily Telemetry Proctor](https://github.com/OWNER/netplus-rig/actions/workflows/telemetry-audit.yml/badge.svg)](https://github.com/OWNER/netplus-rig/actions/workflows/telemetry-audit.yml)
-[![Pages Deployment](https://github.com/OWNER/netplus-rig/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/OWNER/netplus-rig/actions/workflows/deploy-pages.yml)
+[![Daily Telemetry Proctor](https://github.com/pkplaya626/netplus-rig/actions/workflows/telemetry-audit.yml/badge.svg)](https://github.com/pkplaya626/netplus-rig/actions/workflows/telemetry-audit.yml)
+[![Pages Deployment](https://github.com/pkplaya626/netplus-rig/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/pkplaya626/netplus-rig/actions/workflows/deploy-pages.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 An automated, serverless, GitHub-native training rig enforcing a strict 30-day CompTIA Network+ (N10-009) certification sprint. Runs entirely client-side on GitHub Pages and utilizes GitHub Actions as an automated 23:59 proctor.
