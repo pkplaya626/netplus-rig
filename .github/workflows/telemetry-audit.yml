@@ -13,12 +13,6 @@ on:
       - 'telemetry/**'
       - 'scripts/**'
   workflow_dispatch:
-    inputs:
-      day:
-        description: 'Specific Sprint Day to Audit (1-30, leave blank for auto)'
-        required: false
-        default: ''
-        type: string
 
 permissions:
   contents: write
@@ -40,54 +34,29 @@ jobs:
 
       - name: Run Proctor Audit
         id: run_audit
-        run: |
-          DAY_ARG=""
-          if [ -n "${{ inputs.day }}" ]; then
-            DAY_ARG="--day ${{ inputs.day }}"
-          fi
-          
-          # Run audit.py and capture exit status
-          set +e
-          python scripts/audit.py $DAY_ARG
-          AUDIT_EXIT_CODE=$?
-          set -e
-          
-          echo "audit_exit_code=$AUDIT_EXIT_CODE" >> "$GITHUB_OUTPUT"
+        continue-on-error: true
+        run: python scripts/audit.py
 
       - name: Handle Audit Failure (DNF Alert)
-        if: steps.run_audit.outputs.audit_exit_code != '0'
+        if: steps.run_audit.outcome == 'failure'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo "Audit failed. Generating DNF issue and updating streak to RED."
-          
-          DAY=$(python -c "import json; d=json.load(open('telemetry/last_audit_result.json')); print(d.get('day', 1))")
-          ERRORS=$(python -c "import json; d=json.load(open('telemetry/last_audit_result.json')); print('\n'.join(['- ' + e for e in d.get('errors', [])]))")
-          
-          TITLE="🚨 DNF ALERT: Sprint Failed on Day $DAY"
-          BODY="## 🚨 11:59 PM Proctor Audit Failure
-
-The daily automated telemetry and synthesis check for **Day $DAY** did not meet passing standards at 23:59 EDT.
-
-### Violation Diagnostics:
-$ERRORS
-
-### Enforcement Action:
-- Day $DAY marked **RED (DNF)**.
-- Consecutive streak reset to **0**.
-- Status updated in \`telemetry/streak.json\` and \`README.md\`.
-
-*Commit: ${{ github.sha }} | Workflow Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}*"
-
-          # Check if open DNF issue already exists for this day
-          EXISTING_ISSUE=$(gh issue list --search "$TITLE in:title state:open" --json number -q '.[0].number')
-          if [ -z "$EXISTING_ISSUE" ]; then
-            gh issue create --title "$TITLE" --body "$BODY" --label "dnf-alert" || true
-          fi
+          python -c "
+          import json, subprocess
+          try:
+              res = json.load(open('telemetry/last_audit_result.json', encoding='utf-8'))
+              day = res.get('day', 1)
+              errs = '\n'.join(['- ' + e for e in res.get('errors', [])])
+              title = f'🚨 DNF ALERT: Sprint Failed on Day {day}'
+              body = f'## 🚨 11:59 PM Proctor Audit Failure\n\nDaily automated synthesis and telemetry check failed for **Day {day}** at 23:59 EDT.\n\n### Violation Diagnostics:\n{errs}\n\n### Enforcement Action:\n- Day {day} marked RED (DNF)\n- Consecutive streak reset to 0\n- Status updated in telemetry/streak.json and README.md'
+              subprocess.run(['gh', 'issue', 'create', '--title', title, '--body', body, '--label', 'dnf-alert'], check=False)
+          except Exception as e:
+              print(f'Error creating DNF issue: {e}')
+          "
 
       - name: Re-Render Dynamic README Dashboard
-        run: |
-          python scripts/update_readme.py
+        run: python scripts/update_readme.py
 
       - name: Commit and Push Telemetry and README Updates
         run: |
@@ -103,10 +72,8 @@ $ERRORS
             echo "No telemetry changes to commit."
           fi
 
-      - name: Final Proctor Exit Evaluation
+      - name: Proctor Exit Status Check
+        if: steps.run_audit.outcome == 'failure'
         run: |
-          if [ "${{ steps.run_audit.outputs.audit_exit_code }}" != "0" ]; then
-            echo "Proctor audit flagged DNF violations."
-            exit 1
-          fi
-          echo "Proctor audit passed cleanly."
+          echo "Proctor audit flagged DNF violations."
+          exit 1
