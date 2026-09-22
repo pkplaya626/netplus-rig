@@ -1,4 +1,4 @@
-name: Telemetry Audit & Nightly 11:59 PM Proctor
+name: 'Telemetry Audit and Nightly 11:59 PM Proctor'
 
 on:
   schedule:
@@ -18,6 +18,7 @@ on:
         description: 'Specific Sprint Day to Audit (1-30, leave blank for auto)'
         required: false
         default: ''
+        type: string
 
 permissions:
   contents: write
@@ -37,12 +38,12 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Determine Sprint Day & Run Proctor Audit
+      - name: Run Proctor Audit
         id: run_audit
         run: |
           DAY_ARG=""
-          if [ -n "${{ github.event.inputs.day }}" ]; then
-            DAY_ARG="--day ${{ github.event.inputs.day }}"
+          if [ -n "${{ inputs.day }}" ]; then
+            DAY_ARG="--day ${{ inputs.day }}"
           fi
           
           # Run audit.py and capture exit status
@@ -51,7 +52,7 @@ jobs:
           AUDIT_EXIT_CODE=$?
           set -e
           
-          echo "audit_exit_code=$AUDIT_EXIT_CODE" >> $GITHUB_OUTPUT
+          echo "audit_exit_code=$AUDIT_EXIT_CODE" >> "$GITHUB_OUTPUT"
 
       - name: Handle Audit Failure (DNF Alert)
         if: steps.run_audit.outputs.audit_exit_code != '0'
@@ -88,7 +89,7 @@ $ERRORS
         run: |
           python scripts/update_readme.py
 
-      - name: Commit and Push Telemetry & README Updates
+      - name: Commit and Push Telemetry and README Updates
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
