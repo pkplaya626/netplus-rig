@@ -203,16 +203,11 @@ def main():
     # Determine day to audit
     day = args.day
     if day is None:
-        streak_file = repo_root / "telemetry" / "streak.json"
-        if streak_file.exists():
-            try:
-                with open(streak_file, "r", encoding="utf-8") as f:
-                    sdata = json.load(f)
-                    day = sdata.get("lastEvaluatedDay", 1)
-            except Exception:
-                day = 1
-        else:
-            day = 1
+        # Calculate day from sprint start date vs current EDT date
+        edt_now = datetime.now(edt_tz)
+        sprint_start = datetime.strptime(SPRINT_START_DATE, "%Y-%m-%d").replace(tzinfo=edt_tz)
+        day = max(1, (edt_now.date() - sprint_start.date()).days + 1)
+        day = min(day, 30)  # Clamp to 30-day sprint
 
     print("=" * 60)
     print(f"  [NETPLUS RIG] DAILY AUDIT PROCTOR: DAY {day:02d} / 30")

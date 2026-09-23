@@ -202,13 +202,17 @@ export class TelemetryManager {
     }
     agg.overallAccuracy = Number(((agg.questionsCorrect / agg.totalQuestionsAnswered) * 100).toFixed(1));
 
-    // Update domain mastery
+    // Update domain mastery using unique question tracking
     if (this.progress.domainMastery[domain]) {
       const dm = this.progress.domainMastery[domain];
-      if (isCorrect) {
-        dm.cleared = Math.min(dm.total, dm.cleared + 1);
-        dm.pct = Math.round((dm.cleared / dm.total) * 100);
+      if (!dm.clearedIds) dm.clearedIds = [];
+      if (isCorrect && !dm.clearedIds.includes(questionId)) {
+        dm.clearedIds.push(questionId);
+      } else if (!isCorrect) {
+        dm.clearedIds = dm.clearedIds.filter(id => id !== questionId);
       }
+      dm.cleared = Math.min(dm.total, dm.clearedIds.length);
+      dm.pct = Math.round((dm.cleared / dm.total) * 100);
     }
     this.saveProgress();
   }

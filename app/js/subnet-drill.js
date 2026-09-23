@@ -85,8 +85,12 @@ export class SubnetDrill {
     const totalAddresses = Math.pow(2, hostBits);
     const usableHosts = cidr <= 30 ? totalAddresses - 2 : totalAddresses;
 
-    const interestingOctet = Math.floor(cidr / 8) + (cidr % 8 === 0 ? 0 : 1);
-    const bitsInOctet = cidr % 8 === 0 ? 8 : cidr % 8;
+    // Determine which octet the subnet boundary falls in (1-indexed)
+    // For /24 -> octet 4 (host bits are in 4th octet), /25 -> octet 4, /16 -> octet 3
+    const interestingOctet = cidr % 8 === 0
+      ? Math.floor(cidr / 8) + 1
+      : Math.floor(cidr / 8) + 1;
+    const bitsInOctet = cidr % 8 === 0 ? 0 : cidr % 8;
     const blockSize = Math.pow(2, 8 - bitsInOctet);
 
     this.currentProblem = {
