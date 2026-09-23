@@ -137,7 +137,7 @@
       "Plastic Optical Fiber"
     ],
     "correctIndex": 2,
-    "explanation": "Single-mode optical fiber (such as OS1/OS2) has a narrow core of ~8 to 10 µm (typically 9 µm) and utilizes laser light to eliminate modal dispersion, traveling tens of kilometers."
+    "explanation": "Single-mode optical fiber (such as OS1/OS2) has a narrow core of ~8 to 10 \u00b5m (typically 9 \u00b5m) and utilizes laser light to eliminate modal dispersion, traveling tens of kilometers."
   },
   {
     "id": "q-203",
@@ -488,5 +488,89 @@
     ],
     "correctIndex": 1,
     "explanation": "Step 1 is Identify Problem -> Step 2 is Establish Theory of Probable Cause -> Step 3 is Test the Theory to Determine Cause -> Step 4 is Establish Plan of Action -> Step 5 Implement Solution -> Step 6 Verify Functionality -> Step 7 Document Findings."
+  },
+  {
+    "id": "q-109",
+    "domain": "1.0 Networking Concepts",
+    "subdomain": "1.5 Modern Datacenter Architectures",
+    "question": "A network architect designs a datacenter fabric optimized for high-volume East-West container communication with deterministic, single-hop latency between any two servers. Which topology and load-balancing mechanism should be deployed?",
+    "options": [
+      "Traditional Three-Tier Hierarchical with Spanning Tree Protocol",
+      "Two-Tier Spine-and-Leaf (Clos) architecture with Layer 3 ECMP routing",
+      "Collapsed Core topology with 802.1D Spanning Tree timers",
+      "Ring topology with Token Passing arbitration"
+    ],
+    "correctIndex": 1,
+    "explanation": "In a Spine-and-Leaf (Clos) topology, every Leaf switch connects to every Spine switch in a full mesh. Traffic between any two servers experiences a single hop across the spine layer, utilizing Layer 3 ECMP for load balancing."
+  },
+  {
+    "id": "q-110",
+    "domain": "1.0 Networking Concepts",
+    "subdomain": "1.5 Network Overlays",
+    "question": "An enterprise requires extending Layer 2 broadcast domains across a routed Layer 3 IP backbone, expanding beyond the 4,096 VLAN limitation to support multi-tenant isolation. What technology and transport protocol does this?",
+    "options": [
+      "802.1Q Tagging over TCP port 80",
+      "VXLAN (RFC 7348) using UDP destination port 4789 with a 24-bit VNI",
+      "GRE without IPsec over IP protocol 47",
+      "MPLS LDP using TCP port 646"
+    ],
+    "correctIndex": 1,
+    "explanation": "Virtual Extensible LAN (VXLAN) encapsulates Ethernet frames inside UDP datagrams using destination port 4789. It uses a 24-bit VXLAN Network Identifier (VNI) to support over 16 million logical broadcast domains."
+  },
+  {
+    "id": "q-307",
+    "domain": "3.0 Network Operations",
+    "subdomain": "3.1 Routing Principles",
+    "question": "A router routing table contains the following entries: 10.0.0.0/8 (Connected, AD 0), 10.20.0.0/16 (Static, AD 1), and 10.20.30.0/24 (BGP, AD 20). A packet arrives destined for IP 10.20.30.55. Which route will the router select to forward the packet?",
+    "options": [
+      "10.0.0.0/8 because Connected routes have the lowest Administrative Distance (AD 0)",
+      "10.20.0.0/16 because Static routes are manually configured",
+      "10.20.30.0/24 because Longest Prefix Match (/24) takes absolute precedence over Administrative Distance",
+      "The router drops the packet due to conflicting routing sources"
+    ],
+    "correctIndex": 2,
+    "explanation": "The Longest Prefix Match rule is the fundamental decision rule in Layer 3 IP forwarding. The route with the most specific prefix (/24) always wins, regardless of Administrative Distance."
+  },
+  {
+    "id": "q-308",
+    "domain": "3.0 Network Operations",
+    "subdomain": "3.3 High Availability",
+    "question": "A network administrator inspects an ARP table on a client workstation and notices the default gateway MAC address is 00-00-5E-00-01-0A. What first-hop redundancy protocol is in operation?",
+    "options": [
+      "HSRPv1",
+      "HSRPv2",
+      "VRRP for IPv4",
+      "GLBP"
+    ],
+    "correctIndex": 2,
+    "explanation": "VRRP for IPv4 uses the standard IETF virtual MAC address format 00-00-5E-00-01-XX (where XX represents the VRRP group ID in hex, here 0A = group 10). HSRPv1 uses 0000.0c07.acXX, and GLBP uses 0007.b400.XXYY."
+  },
+  {
+    "id": "q-408",
+    "domain": "4.0 Network Security",
+    "subdomain": "4.2 Layer 2 Attacks",
+    "question": "What switchport security mitigation prevents a malicious host from crafting frames with two 802.1Q tags to bypass firewall inspection and hop into a restricted VLAN via the Native VLAN?",
+    "options": [
+      "Configure the Native VLAN to an unused VLAN ID (e.g. 999) and enable explicit native tagging",
+      "Enable Dynamic Trunking Protocol (DTP) on all access ports",
+      "Set STP Bridge Priority to 0",
+      "Configure Half Duplex on trunk interfaces"
+    ],
+    "correctIndex": 0,
+    "explanation": "To prevent 802.1Q Double-Tagging Attacks, security best practices mandate changing the Native VLAN from default 1 to an unused VLAN ID and forcing explicit native tagging (`vlan dot1q tag native`) so the outer tag is never stripped untagged."
+  },
+  {
+    "id": "q-409",
+    "domain": "4.0 Network Security",
+    "subdomain": "4.2 Layer 2 Hardening",
+    "question": "A rogue laptop connected to an access port begins broadcasting gratuitous ARP replies associating its MAC address with the default gateway IP. Which switch feature will intercept and drop these malicious ARP packets?",
+    "options": [
+      "BPDU Guard",
+      "Dynamic ARP Inspection (DAI)",
+      "Storm Control",
+      "Root Guard"
+    ],
+    "correctIndex": 1,
+    "explanation": "Dynamic ARP Inspection (DAI) intercepts all ARP requests and responses on untrusted ports, validating the IP-to-MAC bindings against the trusted database created by DHCP Snooping."
   }
 ]

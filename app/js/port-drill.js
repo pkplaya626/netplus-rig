@@ -1,34 +1,38 @@
 /**
  * Port Speed Trial Engine for CompTIA Network+ (N10-009)
- * Covers all 22 required ports, reaction latency in milliseconds,
- * and high-accuracy rapid-fire matching.
+ * Covers all required ports from the Comprehensive Knowledge Architecture,
+ * reaction latency in milliseconds, and high-accuracy rapid-fire matching.
  */
 
 export const CORE_PORTS = [
-  { port: 20, proto: "TCP", service: "FTP Data", desc: "File Transfer Protocol (Data Channel)" },
-  { port: 21, proto: "TCP", service: "FTP Control", desc: "File Transfer Protocol (Command/Control Channel)" },
-  { port: 22, proto: "TCP", service: "SSH / SFTP", desc: "Secure Shell / Secure FTP (Encrypted CLI & Transfer)" },
-  { port: 23, proto: "TCP", service: "Telnet", desc: "Unencrypted remote terminal emulation" },
-  { port: 25, proto: "TCP", service: "SMTP", desc: "Simple Mail Transfer Protocol (Server-to-Server Relay)" },
-  { port: 53, proto: "UDP/TCP", service: "DNS", desc: "Domain Name System (Queries UDP 53, Zone Transfers TCP 53)" },
-  { port: 67, proto: "UDP", service: "DHCP Server", desc: "Dynamic Host Configuration Protocol (Server listener)" },
-  { port: 68, proto: "UDP", service: "DHCP Client", desc: "Dynamic Host Configuration Protocol (Client listener)" },
-  { port: 69, proto: "UDP", service: "TFTP", desc: "Trivial File Transfer Protocol (Connectionless UDP)" },
-  { port: 80, proto: "TCP", service: "HTTP", desc: "Hypertext Transfer Protocol (Cleartext web)" },
-  { port: 110, proto: "TCP", service: "POP3", desc: "Post Office Protocol v3 (Cleartext mail retrieval)" },
-  { port: 123, proto: "UDP", service: "NTP", desc: "Network Time Protocol (Clock synchronization)" },
-  { port: 143, proto: "TCP", service: "IMAP", desc: "Internet Message Access Protocol (Server-synced mail)" },
-  { port: 161, proto: "UDP", service: "SNMP Polls", desc: "Simple Network Management Protocol (Manager queries)" },
-  { port: 162, proto: "UDP", service: "SNMP Traps", desc: "Simple Network Management Protocol (Agent alerts)" },
-  { port: 389, proto: "TCP", service: "LDAP", desc: "Lightweight Directory Access Protocol" },
-  { port: 443, proto: "TCP", service: "HTTPS", desc: "Hypertext Transfer Protocol Secure (TLS/SSL)" },
-  { port: 445, proto: "TCP", service: "SMB", desc: "Server Message Block (Direct host file sharing)" },
-  { port: 514, proto: "UDP", service: "Syslog", desc: "System Logging Protocol (UDP transport)" },
-  { port: 587, proto: "TCP", service: "SMTP Submission", desc: "Secure Mail Client Submission (STARTTLS)" },
-  { port: 636, proto: "TCP", service: "LDAPS", desc: "Lightweight Directory Access Protocol over TLS/SSL" },
-  { port: 993, proto: "TCP", service: "IMAPS", desc: "Internet Message Access Protocol over TLS/SSL" },
-  { port: 995, proto: "TCP", service: "POP3S", desc: "Post Office Protocol v3 over TLS/SSL" },
-  { port: 3389, proto: "TCP/UDP", service: "RDP", desc: "Remote Desktop Protocol (Microsoft GUI remote access)" }
+  { port: 20, proto: "TCP", service: "FTP Data", desc: "File Transfer Protocol (Active Data Channel)" },
+  { port: 21, proto: "TCP", service: "FTP Control", desc: "File Transfer Protocol (Bidirectional Command & Control Channel)" },
+  { port: 22, proto: "TCP/UDP", service: "SSH / SFTP", desc: "Secure Shell / Secure FTP (Asymmetric encryption for CLI & transfer)" },
+  { port: 23, proto: "TCP", service: "Telnet", desc: "Clear-text unencrypted remote terminal emulation; superseded by SSH" },
+  { port: 25, proto: "TCP", service: "SMTP", desc: "Simple Mail Transfer Protocol (Server-to-server mail relay routing)" },
+  { port: 53, proto: "TCP/UDP", service: "DNS", desc: "Domain Name System (Queries UDP 53, Zone transfers/large payloads TCP 53)" },
+  { port: 67, proto: "UDP", service: "DHCP Server", desc: "Dynamic Host Configuration Protocol (Server/relay listener in DORA process)" },
+  { port: 68, proto: "UDP", service: "DHCP Client", desc: "Dynamic Host Configuration Protocol (Client endpoint listener in DORA process)" },
+  { port: 69, proto: "UDP", service: "TFTP", desc: "Trivial File Transfer Protocol (Connectionless UDP, bootstrap/firmware imaging)" },
+  { port: 80, proto: "TCP", service: "HTTP", desc: "Hypertext Transfer Protocol (Clear-text World Wide Web document transport)" },
+  { port: 88, proto: "TCP/UDP", service: "Kerberos", desc: "Enterprise authentication via symmetric keys & KDC tickets (Active Directory default)" },
+  { port: 110, proto: "TCP", service: "POP3", desc: "Post Office Protocol v3 (Clear-text mail retrieval, deletes from server by default)" },
+  { port: 123, proto: "UDP", service: "NTP", desc: "Network Time Protocol (Clock synchronization across hierarchical stratum architecture)" },
+  { port: 143, proto: "TCP", service: "IMAP", desc: "Internet Message Access Protocol (Server-synced mail keeping headers centralized)" },
+  { port: 161, proto: "UDP", service: "SNMP Polls", desc: "Simple Network Management Protocol (Management queries and polling commands)" },
+  { port: 162, proto: "UDP", service: "SNMP Traps", desc: "Simple Network Management Protocol (Unsolicited asynchronous agent alerts)" },
+  { port: 389, proto: "TCP/UDP", service: "LDAP", desc: "Lightweight Directory Access Protocol (Unencrypted corporate directory querying)" },
+  { port: 443, proto: "TCP", service: "HTTPS", desc: "Hypertext Transfer Protocol Secure (HTTP wrapped inside cryptographic TLS session)" },
+  { port: 445, proto: "TCP", service: "SMB", desc: "Server Message Block (Network file system & print sharing native over TCP/IP)" },
+  { port: 514, proto: "UDP", service: "Syslog", desc: "Standard system log collection forwarding notifications to central SIEM collector" },
+  { port: 587, proto: "TCP", service: "SMTPS / Submission", desc: "Simple Mail Transfer Protocol Secure (Enforces mandatory TLS for client submission)" },
+  { port: 636, proto: "TCP", service: "LDAPS", desc: "LDAP over SSL/TLS (Directory query mechanism in TLS cryptographic tunnel)" },
+  { port: 993, proto: "TCP", service: "IMAPS", desc: "IMAP over SSL/TLS (Encrypted email synchronization over dedicated secure socket)" },
+  { port: 995, proto: "TCP", service: "POP3S", desc: "POP3 over SSL/TLS (Encrypted email retrieval over dedicated secure socket)" },
+  { port: 1433, proto: "TCP", service: "Microsoft SQL Server", desc: "Relational database client query protocol for structured data operations" },
+  { port: 3389, proto: "TCP/UDP", service: "RDP", desc: "Remote Desktop Protocol (Microsoft proprietary graphical desktop management)" },
+  { port: 5060, proto: "TCP/UDP", service: "SIP (Clear-text)", desc: "Session Initiation Protocol (VoIP signaling, call setup & teardown in cleartext)" },
+  { port: 5061, proto: "TCP/UDP", service: "SIP over TLS", desc: "Session Initiation Protocol Secure (VoIP signaling encapsulated over TLS)" }
 ];
 
 export class PortDrill {

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
+  <title>CompTIA Network+ (N10-009) // Systemic Architecture & Operational Reference</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .ref-content-section {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+    .ref-content-section h2 {
+      color: var(--neon-cyan);
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 0.5rem;
+    }
+    .ref-content-section h3 {
+      color: var(--neon-emerald);
+      font-size: 1.15rem;
+      margin: 1.5rem 0 0.5rem;
+    }
+    .ref-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0 1.5rem;
+      font-size: 0.9rem;
+    }
+    .ref-table th, .ref-table td {
+      border: 1px solid var(--border-subtle);
+      padding: 0.75rem 1rem;
+      text-align: left;
+    }
+    .ref-table th {
+      background: var(--bg-card);
+      color: var(--neon-cyan);
+      font-family: var(--font-mono);
+      font-weight: 700;
+    }
+    .ref-table tr:hover td {
+      background: rgba(0, 229, 255, 0.03);
+    }
+    .callout-box {
+      background: var(--bg-card);
+      border-left: 4px solid var(--neon-emerald);
+      padding: 1rem 1.25rem;
+      border-radius: 4px;
+      margin: 1rem 0;
+      font-size: 0.92rem;
+    }
+    .formula-badge {
+      display: inline-block;
+      background: #090e18;
+      border: 1px solid var(--border-bright);
+      color: var(--neon-cyan);
+      padding: 0.35rem 0.75rem;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      margin: 0.25rem 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Bar -->
+  <header class="header-bar">
+    <div class="brand-container">
+      <a href="index.html" class="brand-logo">
+        <span class="pulse-dot"></span>
+        <span>NET+ RIG // SYSTEMIC REFERENCE</span>
+      </a>
+      <span class="badge badge-purple">ARCHITECTURE</span>
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">Mission Control</a></li>
+        <li><a href="cards.html" class="nav-link">Flashcards (100)</a></li>
+        <li><a href="drills.html" class="nav-link">Speed Drills</a></li>
+        <li><a href="reference.html" class="nav-link active">Systemic Reference</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Reference Guide -->
+  <main class="main-wrapper">
+    <div class="mission-banner" style="border-left-color: var(--neon-purple);">
+      <div class="mission-title-group">
+        <h1>CompTIA Network+ (N10-009) // Comprehensive Systemic Analysis</h1>
+        <p>Operational Architecture, Deep Engineering Mechanics & Defensive Hardening Specifications</p>
+      </div>
+      <div class="badge badge-cyan" style="font-size:0.9rem; padding:0.5rem 1rem;">40-PAGE CURRICULUM SYNOPSIS</div>
+    </div>
+
+    <!-- Quick Jump Anchor Bar -->
+    <div style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:2rem;">
+      <a href="#section-1" class="btn btn-secondary" style="font-size:0.8rem; padding:0.4rem 0.8rem;">1. 7-Step Troubleshooting</a>
+      <a href="#section-2" class="btn btn-secondary" style="font-size:0.8rem; padding:0.4rem 0.8rem;">2. Subnetting & VLSM</a>
+      <a href="#section-3" class="btn btn-secondary" style="font-size:0.8rem; padding:0.4rem 0.8rem;">3. Routing & AD Hierarchy</a>
+      <a href="#section-4" class="btn btn-secondary" style="font-size:0.8rem; padding:0.4rem 0.8rem;">4. Switching & STP</a>
+      <a href="#section-5" class="btn btn-secondary" style="font-size:0.8rem; padding:0.4rem 0.8rem;">5. Spine-and-Leaf & Overlays</a>
+      <a href="#section-6" class="btn btn-secondary" style="font-size:0.8rem; padding:0.4rem 0.8rem;">6. Zero-Trust & L2 Security</a>
+      <a href="#section-7" class="btn btn-secondary" style="font-size:0.8rem; padding:0.4rem 0.8rem;">7. FHRP & Disaster Recovery</a>
+    </div>
+
+    <!-- Section 1 -->
+    <section id="section-1" class="ref-content-section">
+      <h2>1. The CompTIA Seven-Step Network Troubleshooting Methodology</h2>
+      <p>A deterministic operational framework preventing confirmation bias, untested production modifications, and undocumented infrastructure debt.</p>
+
+      <table class="ref-table">
+        <thead>
+          <tr>
+            <th>Step</th>
+            <th>Primary Diagnostic Tasks</th>
+            <th>Operational Risks of Non-Compliance</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Step 1: Identify the Problem</strong></td>
+            <td>Gather symptoms, question end users, determine scope (single host, subnet, IDF, or backbone), review recent changes, and duplicate faults safely.</td>
+            <td>Incomplete data leads to misdiagnosed root causes and prolonged outage time.</td>
+          </tr>
+          <tr>
+            <td><strong>Step 2: Establish a Theory of Probable Cause</strong></td>
+            <td>Evaluate common failure modes, apply structured OSI models (top-down, bottom-up, divide-and-conquer), and question the obvious.</td>
+            <td>Jumping directly to conclusions without broad evaluation introduces confirmation bias.</td>
+          </tr>
+          <tr>
+            <td><strong>Step 3: Test the Theory to Determine Cause</strong></td>
+            <td>Execute non-destructive diagnostics (CLI drop counters, ping/traceroute, packet captures) to confirm hypothesis; re-evaluate or escalate when disproved.</td>
+            <td>Making unverified production changes during testing risks cascading secondary outages.</td>
+          </tr>
+          <tr>
+            <td><strong>Step 4: Establish a Plan of Action & Identify Potential Effects</strong></td>
+            <td>Draft detailed implementation sequence, identify cross-system risks (STP reconvergence, routing flaps), prepare documented rollback plans, and obtain change approval.</td>
+            <td>Unplanned modifications trigger unintended cross-system failures.</td>
+          </tr>
+          <tr>
+            <td><strong>Step 5: Implement Solution or Escalate</strong></td>
+            <td>Methodically apply changes one variable at a time within approved maintenance windows; rollback if complications exceed technical scope.</td>
+            <td>Changing multiple variables obscures which adjustment resolved the fault.</td>
+          </tr>
+          <tr>
+            <td><strong>Step 6: Verify Full Functionality & Preventative Controls</strong></td>
+            <td>Confirm end-to-end service with users, monitor telemetry baselines, and deploy preventative controls (e.g. BPDU Guard, DHCP Snooping).</td>
+            <td>Restoring link-level connectivity without application verification leaves services broken.</td>
+          </tr>
+          <tr>
+            <td><strong>Step 7: Document Findings, Actions, and Outcomes</strong></td>
+            <td>Update ticketing systems, change management logs, physical/logical diagrams, and IPAM repositories.</td>
+            <td>Undocumented fixes lead to recurring troubleshooting cycles and obsolete diagrams.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout-box">
+        <strong>Diagnostic Strategies:</strong>
+        <ul style="margin-left: 1.25rem; margin-top: 0.5rem;">
+          <li><strong>Bottom-Up (L1 &rarr; L7):</strong> Begin at physical media and transceivers. Ideal when hardware or physical patching changes occurred.</li>
+          <li><strong>Top-Down (L7 &rarr; L1):</strong> Begin at service daemons, HTTP status codes, and DNS. Ideal when link is up but applications fail.</li>
+          <li><strong>Divide-and-Conquer (L3 First):</strong> Ping the default gateway. Success immediately rules out L1/L2 and ARP, isolating faults to upper layers.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Section 2 -->
+    <section id="section-2" class="ref-content-section">
+      <h2>2. Mathematical Mechanics of IPv4 Subnetting & VLSM Design</h2>
+      <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-bottom:1rem;">
+        <span class="formula-badge">Subnets = 2ⁿ</span>
+        <span class="formula-badge">Usable Hosts = 2ʰ - 2</span>
+        <span class="formula-badge">Magic Number = 256 - Subnet Mask = 2⁽⁸⁻ᵇ⁾</span>
+      </div>
+
+      <table class="ref-table">
+        <thead>
+          <tr>
+            <th>CIDR Prefix</th>
+            <th>Subnet Mask</th>
+            <th>Altered Octet</th>
+            <th>Magic Number (Block Size)</th>
+            <th>Total Addresses</th>
+            <th>Usable Host Capacity</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>/24</td><td>255.255.255.0</td><td>4th</td><td>256</td><td>256</td><td>254</td></tr>
+          <tr><td>/25</td><td>255.255.255.128</td><td>4th</td><td>128</td><td>128</td><td>126</td></tr>
+          <tr><td>/26</td><td>255.255.255.192</td><td>4th</td><td>64</td><td>64</td><td>62</td></tr>
+          <tr><td>/27</td><td>255.255.255.224</td><td>4th</td><td>32</td><td>32</td><td>30</td></tr>
+          <tr><td>/28</td><td>255.255.255.240</td><td>4th</td><td>16</td><td>16</td><td>14</td></tr>
+          <tr><td>/29</td><td>255.255.255.248</td><td>4th</td><td>8</td><td>8</td><td>6</td></tr>
+          <tr><td>/30</td><td>255.255.255.252</td><td>4th</td><td>4</td><td>4</td><td>2 (Point-to-Point WAN)</td></tr>
+          <tr><td>/31</td><td>255.255.255.254</td><td>4th</td><td>2</td><td>2</td><td>2 (RFC 3021 Point-to-Point)</td></tr>
+          <tr><td>/32</td><td>255.255.255.255</td><td>4th</td><td>1</td><td>1</td><td>1 (Host Loopback Interface)</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout-box">
+        <strong>Golden Rule of VLSM:</strong> Subnets must ALWAYS be allocated from the <strong>largest host requirement down to the smallest</strong> to prevent overlapping address spaces and fragmentation.
+      </div>
+    </section>
+
+    <!-- Section 3 -->
+    <section id="section-3" class="ref-content-section">
+      <h2>3. Dynamic Routing Fabric & Administrative Distance (AD)</h2>
+      <p>Routing decisions prioritize <strong>Longest Prefix Match</strong> above all else. If prefix lengths match, the router breaks the tie using <strong>Administrative Distance (AD)</strong>.</p>
+
+      <table class="ref-table">
+        <thead>
+          <tr>
+            <th>Routing Source</th>
+            <th>Default AD</th>
+            <th>Protocol Classification</th>
+            <th>Path Metric Mechanics</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Connected Interface</strong></td><td>0</td><td>Hardware State</td><td>Direct physical link status</td></tr>
+          <tr><td><strong>Static Route</strong></td><td>1</td><td>Manual Configuration</td><td>Administratively assigned next-hop IP</td></tr>
+          <tr><td><strong>External BGP (eBGP)</strong></td><td>20</td><td>Path Vector</td><td>AS-Path length, Local Preference, MED</td></tr>
+          <tr><td><strong>Internal EIGRP</strong></td><td>90</td><td>Advanced Distance Vector</td><td>Composite metric (Bandwidth + Delay)</td></tr>
+          <tr><td><strong>OSPF</strong></td><td>110</td><td>Link-State</td><td>Cumulative interface cost (10⁸ / bandwidth)</td></tr>
+          <tr><td><strong>IS-IS</strong></td><td>115</td><td>Link-State</td><td>Cumulative arbitrary integer interface cost</td></tr>
+          <tr><td><strong>RIP</strong></td><td>120</td><td>Distance Vector</td><td>Hop count (max 15; 16 = unreachable)</td></tr>
+          <tr><td><strong>External EIGRP</strong></td><td>170</td><td>Advanced Distance Vector</td><td>Composite metric from redistributed external routes</td></tr>
+          <tr><td><strong>Internal BGP (iBGP)</strong></td><td>200</td><td>Path Vector</td><td>BGP attributes exchanged within single AS</td></tr>
+          <tr><td><strong>Gateway of Last Resort</strong></td><td>Fallback</td><td>Default Route</td><td>Matches 0.0.0.0/0 traffic</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Section 4 -->
+    <section id="section-4" class="ref-content-section">
+      <h2>4. Enterprise Switching Dynamics: 802.1Q & Spanning Tree</h2>
+      <div class="callout-box">
+        <strong>IEEE 802.1Q Tag (4 Bytes / 32 Bits):</strong>
+        <ul style="margin-left: 1.25rem;">
+          <li><strong>TPID (16 bits):</strong> <code>0x8100</code> identifies frame as 802.1Q tagged.</li>
+          <li><strong>PCP (3 bits):</strong> Class of Service (CoS) for Layer 2 Quality of Service.</li>
+          <li><strong>DEI (1 bit):</strong> Drop Eligible Indicator for congestion management.</li>
+          <li><strong>VID (12 bits):</strong> VLAN Identifier supporting 4,096 logical IDs (1-4094 usable).</li>
+        </ul>
+      </div>
+
+      <table class="ref-table">
+        <thead>
+          <tr>
+            <th>STP Standard</th>
+            <th>IEEE Spec</th>
+            <th>Convergence Time</th>
+            <th>Port State Transitions</th>
+            <th>Core Mechanics</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Classic STP</strong></td>
+            <td>802.1D</td>
+            <td>30 – 50 seconds</td>
+            <td>Blocking &rarr; Listening &rarr; Learning &rarr; Forwarding</td>
+            <td>Static timers: 20s Max Age, 15s Forward Delay.</td>
+          </tr>
+          <tr>
+            <td><strong>Rapid STP (RSTP)</strong></td>
+            <td>802.1w</td>
+            <td>Milliseconds</td>
+            <td>Discarding &rarr; Learning &rarr; Forwarding</td>
+            <td>Proactive Proposal-Agreement handshakes between adjacent switches.</td>
+          </tr>
+          <tr>
+            <td><strong>Multiple STP (MSTP)</strong></td>
+            <td>802.1s</td>
+            <td>Milliseconds</td>
+            <td>Discarding &rarr; Learning &rarr; Forwarding</td>
+            <td>Maps multiple VLANs into distinct spanning tree instances.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Section 5 -->
+    <section id="section-5" class="ref-content-section">
+      <h2>5. Modern Datacenter Architectures: Spine-and-Leaf, VXLAN, and SDN</h2>
+      <table class="ref-table">
+        <thead>
+          <tr>
+            <th>Domain</th>
+            <th>Three-Tier Hierarchical</th>
+            <th>Two-Tier Spine-and-Leaf (Clos)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Hierarchy</strong></td>
+            <td>Access, Distribution, Core tiers</td>
+            <td>Leaf (Access/ToR) and Spine (Fabric Backbone) tiers</td>
+          </tr>
+          <tr>
+            <td><strong>Traffic Optimization</strong></td>
+            <td>North-South perimeter client-to-server traffic</td>
+            <td>East-West lateral server-to-server cluster traffic</td>
+          </tr>
+          <tr>
+            <td><strong>Forwarding Fabric</strong></td>
+            <td>Spanning Tree Protocol (blocks redundant links)</td>
+            <td>Layer 3 dynamic routing with Equal-Cost Multi-Path (ECMP)</td>
+          </tr>
+          <tr>
+            <td><strong>Latency Characteristics</strong></td>
+            <td>Variable depending on core traversal depth</td>
+            <td>Deterministic, single-hop latency between any two leaf switches</td>
+          </tr>
+          <tr>
+            <td><strong>Network Overlays</strong></td>
+            <td>802.1Q VLANs (4,096 limit)</td>
+            <td>VXLAN (RFC 7348): UDP port 4789, 24-bit VNI (16 million+ segments), VTEPs</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Section 6 -->
+    <section id="section-6" class="ref-content-section">
+      <h2>6. Zero-Trust Architecture & Layer 2 Defensive Hardening</h2>
+      <p>Zero-Trust Architecture (NIST SP 800-207) eliminates implicit trust through <strong>Microsegmentation</strong>, <strong>Continuous Adaptive Verification</strong>, and <strong>Least-Privilege Enforcement</strong>.</p>
+
+      <table class="ref-table">
+        <thead>
+          <tr>
+            <th>Layer 2 Attack Vector</th>
+            <th>Attack Mechanics & System Impact</th>
+            <th>Defensive Hardening Configuration</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>CAM Table Exhaustion (MAC Flooding)</strong></td>
+            <td>Attacker floods switch with bogus source MACs to fill CAM table, causing switch to fail open and broadcast all frames like a hub.</td>
+            <td><strong>Port Security:</strong> Restricts permitted MAC count, enables <code>mac-address sticky</code>, and places violating ports into <code>errdisable</code> state.</td>
+          </tr>
+          <tr>
+            <td><strong>DHCP Starvation & Rogue DHCP</strong></td>
+            <td>Attacker exhausts legitimate IP pool and deploys a rogue DHCP server issuing malicious gateway and DNS settings.</td>
+            <td><strong>DHCP Snooping:</strong> Designates trusted vs. untrusted ports; drops DHCP server offers on untrusted interfaces and builds a binding database.</td>
+          </tr>
+          <tr>
+            <td><strong>ARP Poisoning (On-Path Attack)</strong></td>
+            <td>Attacker transmits unsolicited, spoofed ARP replies associating their MAC with the default gateway IP.</td>
+            <td><strong>Dynamic ARP Inspection (DAI):</strong> Intercepts ARP packets on untrusted ports, validating IP-to-MAC bindings against the DHCP Snooping database.</td>
+          </tr>
+          <tr>
+            <td><strong>STP Root Hijacking</strong></td>
+            <td>Rogue switch advertises Bridge Priority 0 to force an STP recalculation and become root bridge.</td>
+            <td><strong>BPDU Guard:</strong> Shuts down PortFast ports receiving BPDUs.<br><strong>Root Guard:</strong> Prevents downstream ports from becoming the root bridge.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Section 7 -->
+    <section id="section-7" class="ref-content-section">
+      <h2>7. High Availability (FHRP) & Disaster Recovery Frameworks</h2>
+      <table class="ref-table">
+        <thead>
+          <tr>
+            <th>FHRP Protocol</th>
+            <th>Standard Specification</th>
+            <th>Operational Roles</th>
+            <th>Virtual MAC Address Signature</th>
+            <th>Preemption Default</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>HSRP</strong></td>
+            <td>Cisco Proprietary (RFC 2281)</td>
+            <td>Active router forwards; Standby monitors via hello packets.</td>
+            <td><code>0000.0c07.acXX</code> (v1)<br><code>0000.0c9f.fXXX</code> (v2)</td>
+            <td>Disabled by default</td>
+          </tr>
+          <tr>
+            <td><strong>VRRP</strong></td>
+            <td>IETF Open Standard (RFC 5798)</td>
+            <td>Master router forwards; one or more Backup routers monitor.</td>
+            <td><code>00-00-5E-00-01-XX</code> (IPv4)<br><code>00-00-5E-00-02-XX</code> (IPv6)</td>
+            <td>Enabled by default</td>
+          </tr>
+          <tr>
+            <td><strong>GLBP</strong></td>
+            <td>Cisco Proprietary</td>
+            <td>Active Virtual Gateway (AVG) answers ARPs; up to 4 Active Virtual Forwarders (AVFs) forward traffic simultaneously.</td>
+            <td><code>0007.b400.XXYY</code></td>
+            <td>Balances traffic via round-robin, host-dependent, or weighted algorithms</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Disaster Recovery Site Classifications</h3>
+      <table class="ref-table">
+        <thead>
+          <tr>
+            <th>Site Classification</th>
+            <th>Hardware Readiness</th>
+            <th>Data State</th>
+            <th>RTO Profile</th>
+            <th>RPO Profile</th>
+            <th>Cost Profile</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Cold Site</strong></td><td>Space, power, cooling only; no hardware</td><td>No data pre-loaded; archive restoration</td><td>Extended: Days to Weeks</td><td>High: Days to Weeks</td><td>Low Capital Cost</td></tr>
+          <tr><td><strong>Warm Site</strong></td><td>Hardware pre-racked and networked</td><td>Periodic backup sync; no live mirror</td><td>Moderate: Hours to Days</td><td>Moderate: Hours to 1 Day</td><td>Moderate Ongoing Cost</td></tr>
+          <tr><td><strong>Hot Site (Active-Passive)</strong></td><td>Fully provisioned standby facility</td><td>Near-real-time data replication</td><td>Minutes to 1 Hour</td><td>Seconds to Minutes</td><td>High Maintenance Cost</td></tr>
+          <tr><td><strong>Hot Site (Active-Active)</strong></td><td>Redundant live load-balanced clusters</td><td>Real-time synchronous replication</td><td>Near-Zero: Instantaneous</td><td>Near-Zero: Zero Data Loss</td><td>Maximum Investment</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+</body>
+</html>

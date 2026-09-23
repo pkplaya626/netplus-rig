@@ -56,8 +56,8 @@ def build_dashboard_markdown(repo_root: Path) -> str:
     # Default fallbacks
     progress = {}
     streak = {"currentStreak": 1, "longestStreak": 1, "days": {"1": "GREEN"}}
-    total_cards = 55
-    total_questions = 35
+    total_cards = 100
+    total_questions = 41
     total_reviews = 10
 
     if progress_file.exists():
@@ -199,10 +199,13 @@ An automated, serverless, GitHub-native training rig enforcing a strict 30-day C
 │   └── telemetry-audit.yml    # Nightly 23:59 EDT cron proctor, audit & DNF logger
 ├── app/                       # Zero-build vanilla ES6 client-side application
 │   ├── index.html             # NOC Mission Control dashboard
-│   ├── cards.html             # SuperMemo SM-2 Spaced Repetition flashcards
-│   ├── drills.html            # Algorithmic subnetting & port matching trials
+│   ├── cards.html             # SuperMemo SM-2 Spaced Repetition flashcards (100 cards)
+│   ├── drills.html            # Algorithmic subnetting & port matching trials (28 ports)
+│   ├── reference.html         # Comprehensive Systemic Architecture & Engineering Guide
 │   ├── css/style.css          # High-contrast terminal dark mode UI
 │   └── js/                    # SM-2, subnet calculation, and telemetry modules
+├── docs/                      # Technical curriculum documentation
+│   └── systemic-analysis.md   # Complete 7-chapter systemic analysis from curriculum
 ├── artifacts/                 # Version-controlled daily synthesis reports
 ├── data/                      # Cards, questions, and review state JSON
 ├── scripts/                   # Python audit proctor and dynamic README renderer
@@ -214,7 +217,7 @@ An automated, serverless, GitHub-native training rig enforcing a strict 30-day C
 ## 🎮 Launching the Application
 
 ### Option 1: Live on GitHub Pages
-Once deployed, browse to `https://<your-username>.github.io/netplus-rig/`.
+Live Production Deployment: [https://pkplaya626.github.io/netplus-rig/](https://pkplaya626.github.io/netplus-rig/).
 
 ### Option 2: Run Locally (Zero Build Step)
 Launch any local static server from the repository root:

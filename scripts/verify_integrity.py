@@ -18,16 +18,16 @@ cards_path = repo_root / "data" / "cards.json"
 assert cards_path.exists(), "data/cards.json missing"
 with open(cards_path, "r", encoding="utf-8") as f:
     cards = json.load(f)
-print(f"[OK] data/cards.json: {len(cards)} cards loaded (Requirement: 50+)")
-assert len(cards) >= 50, f"Expected at least 50 cards, got {len(cards)}"
+print(f"[OK] data/cards.json: {len(cards)} cards loaded (Requirement: 100+)")
+assert len(cards) >= 100, f"Expected at least 100 cards, got {len(cards)}"
 
 # 2. Questions
 q_path = repo_root / "data" / "questions.json"
 assert q_path.exists(), "data/questions.json missing"
 with open(q_path, "r", encoding="utf-8") as f:
     questions = json.load(f)
-print(f"[OK] data/questions.json: {len(questions)} questions loaded (Requirement: 30+)")
-assert len(questions) >= 30, f"Expected at least 30 questions, got {len(questions)}"
+print(f"[OK] data/questions.json: {len(questions)} questions loaded (Requirement: 40+)")
+assert len(questions) >= 40, f"Expected at least 40 questions, got {len(questions)}"
 
 # 3. Reviews
 r_path = repo_root / "data" / "reviews.json"
@@ -47,7 +47,7 @@ with open(s_path, "r", encoding="utf-8") as f:
     streak = json.load(f)
 print(f"[OK] telemetry/progress.json & streak.json: active streak {streak.get('currentStreak')}")
 
-# 5. Day 1 Artifact
+# 5. Day 1 Artifact & Systemic Analysis Doc
 art_path = repo_root / "artifacts" / "day-01-osi-and-packet-flow.md"
 assert art_path.exists(), "day-01 artifact missing"
 with open(art_path, "r", encoding="utf-8") as f:
@@ -57,11 +57,16 @@ words = len(re.findall(r"\b[\w'-]+\b", art_text))
 print(f"[OK] artifacts/day-01-osi-and-packet-flow.md: {words} words (Requirement: >= 300)")
 assert words >= 300, f"Expected at least 300 words, got {words}"
 
+doc_path = repo_root / "docs" / "systemic-analysis.md"
+assert doc_path.exists(), "docs/systemic-analysis.md missing"
+print("[OK] docs/systemic-analysis.md: Systemic analysis architecture doc present")
+
 # 6. Web App Files
 app_files = [
     "app/index.html",
     "app/cards.html",
     "app/drills.html",
+    "app/reference.html",
     "app/css/style.css",
     "app/js/sm2.js",
     "app/js/cards.js",
