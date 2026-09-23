@@ -11,7 +11,7 @@ import json
 import os
 import re
 import sys
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
 
@@ -174,6 +174,9 @@ def update_streak(repo_root: Path, day: int, is_green: bool):
         json.dump(streak_data, f, indent=2)
 
 
+SPRINT_START_DATE = "2026-09-23"  # Sprint officially commences tomorrow
+
+
 def main():
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8")
@@ -183,6 +186,19 @@ def main():
     args = parser.parse_args()
 
     repo_root = Path(args.root).resolve()
+
+    # Pre-flight check: If no specific day passed and current EDT date is before start date, standby
+    edt_tz = timezone(timedelta(hours=-4))
+    current_edt_date = datetime.now(edt_tz).strftime("%Y-%m-%d")
+    if args.day is None and current_edt_date < SPRINT_START_DATE:
+        print("=" * 60)
+        print("  [NETPLUS RIG] SPRINT STANDBY MODE")
+        print(f"  Sprint begins tomorrow: {SPRINT_START_DATE}")
+        print(f"  Current EDT Date: {current_edt_date}")
+        print("  First 11:59 PM Proctor Deadline: 2026-09-23 at 23:59 EDT")
+        print("  Proctor audit in standby. No DNF will be issued tonight.")
+        print("=" * 60)
+        sys.exit(0)
 
     # Determine day to audit
     day = args.day

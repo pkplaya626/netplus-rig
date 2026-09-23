@@ -115,6 +115,7 @@ def build_dashboard_markdown(repo_root: Path) -> str:
 
     dashboard = f"""<!-- START_AUTOGEN_DASHBOARD -->
 ### 📡 Live Sprint Telemetry Dashboard
+*Sprint Start: **2026-09-23** | First Deadline: **Tomorrow (2026-09-23) at 23:59 EDT***  
 *Last Proctor Sync: `{now_utc}` | Current Day: **Day {last_eval:02d} of 30***
 
 ```text
@@ -126,7 +127,7 @@ def build_dashboard_markdown(repo_root: Path) -> str:
 #### 🗓️ 30-Day Sprint Calendar Matrix
 {calendar_table}
 
-> **Legend:** 🟩 Verified Synthesis (>=300 words + Diagram + Telemetry) | 🟥 DNF (Missed Deadline / Reset) | ⬜ Upcoming / In Progress
+> **Legend:** 🟩 Verified Synthesis (>=300 words + Diagram + Telemetry) | 🟥 DNF (Missed Deadline / Reset) | ⬜ Pending (First Deadline: 2026-09-23 23:59 EDT)
 
 ---
 
