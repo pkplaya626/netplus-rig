@@ -1,11 +1,11 @@
 {
-  "currentStreak": 1,
+  "currentStreak": 0,
   "longestStreak": 1,
-  "lastEvaluatedDay": 1,
-  "lastEvaluatedTimestamp": "2026-09-23T08:52:03.943772+00:00",
+  "lastEvaluatedDay": 2,
+  "lastEvaluatedTimestamp": "2026-09-24T08:47:55.046006+00:00",
   "days": {
     "1": "GREEN",
-    "2": "PENDING",
+    "2": "RED",
     "3": "PENDING",
     "4": "PENDING",
     "5": "PENDING",
