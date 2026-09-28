@@ -1,15 +1,15 @@
 {
   "currentStreak": 0,
   "longestStreak": 1,
-  "lastEvaluatedDay": 5,
-  "lastEvaluatedTimestamp": "2026-09-27T09:33:59.466358+00:00",
+  "lastEvaluatedDay": 6,
+  "lastEvaluatedTimestamp": "2026-09-28T10:12:56.858095+00:00",
   "days": {
     "1": "GREEN",
     "2": "RED",
     "3": "RED",
     "4": "RED",
     "5": "RED",
-    "6": "PENDING",
+    "6": "RED",
     "7": "PENDING",
     "8": "PENDING",
     "9": "PENDING",
