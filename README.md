@@ -11,7 +11,7 @@ An automated, serverless, GitHub-native training rig enforcing a strict 30-day C
 <!-- START_AUTOGEN_DASHBOARD -->
 ### 📡 Live Sprint Telemetry Dashboard
 *Sprint Start: **2026-09-23** | First Deadline: **Tomorrow (2026-09-23) at 23:59 EDT***  
-*Last Proctor Sync: `2026-09-29 10:10 UTC` | Current Day: **Day 07 of 30***
+*Last Proctor Sync: `2026-09-30 10:02 UTC` | Current Day: **Day 08 of 30***
 
 ```text
 +-------------------------------------------------------------------------------+
@@ -23,7 +23,7 @@ An automated, serverless, GitHub-native training rig enforcing a strict 30-day C
 | Week | Day 1 | Day 2 | Day 3 | Day 4 | Day 5 | Day 6 |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
 | **W1** | 🟩 D01 | 🟥 D02 | 🟥 D03 | 🟥 D04 | 🟥 D05 | 🟥 D06 |
-| **W2** | 🟥 D07 | ⬜ D08 | ⬜ D09 | ⬜ D10 | ⬜ D11 | ⬜ D12 |
+| **W2** | 🟥 D07 | 🟥 D08 | ⬜ D09 | ⬜ D10 | ⬜ D11 | ⬜ D12 |
 | **W3** | ⬜ D13 | ⬜ D14 | ⬜ D15 | ⬜ D16 | ⬜ D17 | ⬜ D18 |
 | **W4** | ⬜ D19 | ⬜ D20 | ⬜ D21 | ⬜ D22 | ⬜ D23 | ⬜ D24 |
 | **W5** | ⬜ D25 | ⬜ D26 | ⬜ D27 | ⬜ D28 | ⬜ D29 | ⬜ D30 |
