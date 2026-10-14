@@ -1,10 +1,10 @@
 {
-  "day": 21,
+  "day": 22,
   "passed": false,
   "status": "RED",
   "errors": [
-    "Missing synthesis markdown file for Day 21 (expected artifacts/day-21-*.md)",
-    "No daily log entry found in telemetry/progress.json for Day 21."
+    "Missing synthesis markdown file for Day 22 (expected artifacts/day-22-*.md)",
+    "No daily log entry found in telemetry/progress.json for Day 22."
   ],
-  "timestamp": "2026-10-13T11:13:01.485672+00:00"
+  "timestamp": "2026-10-14T09:04:11.924136+00:00"
 }
